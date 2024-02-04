@@ -1,0 +1,25 @@
+html {
+    height: 100%;
+}
+
+body{
+    --bs-primary: #a4a863;
+    --bs-btn-bg: var(--bs-primary);
+    --bs-primary-rgb: 164, 168, 99;
+    --bs-btn-bg-rgb: var(--bs-primary-rgb);
+    --bs-btn-color-rgb: var(--bs-primary-rgb);
+    --bs-nav-pills-link-active-bg: var(--bs-primary);
+
+    --bs-secondary: #d3cdb6;
+    --bs-secondary-rgb: 211, 205, 182;
+
+    --bs-btn-border-color: var(--bs-secondary);
+
+
+    --bs-nav-tabs-link-active-bg: var(--bs-primary);
+    --bs-nav-tabs-link-active-bg-rgb: var(--bs-btn-color-rgb);
+}
+
+body .nav-pills{
+    --bs-nav-pills-link-active-bg: var(--bs-primary)
+}

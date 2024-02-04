@@ -2,12 +2,296 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Yellowstone Jobs - Application Form</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <link href="./YellowstoneCustom.css">
-</head>
-<body>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
+    <link rel="stylesheet" href="YellowstoneCustom.css">
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+</head>
+<body class="h-100 p-0 m-0a">
+
+<!-- LOCATION UNSPECIFIC START -->
+    <!-- ICONS FOR SIDEBAR START -->
+    <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
+        <symbol id="bootstrap" viewBox="0 0 118 94">
+            <title>Bootstrap</title>
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M24.509 0c-6.733 0-11.715 5.893-11.492 12.284.214 6.14-.064 14.092-2.066 20.577C8.943 39.365 5.547 43.485 0 44.014v5.972c5.547.529 8.943 4.649 10.951 11.153 2.002 6.485 2.28 14.437 2.066 20.577C12.794 88.106 17.776 94 24.51 94H93.5c6.733 0 11.714-5.893 11.491-12.284-.214-6.14.064-14.092 2.066-20.577 2.009-6.504 5.396-10.624 10.943-11.153v-5.972c-5.547-.529-8.934-4.649-10.943-11.153-2.002-6.484-2.28-14.437-2.066-20.577C105.214 5.894 100.233 0 93.5 0H24.508zM80 57.863C80 66.663 73.436 72 62.543 72H44a2 2 0 01-2-2V24a2 2 0 012-2h18.437c9.083 0 15.044 4.92 15.044 12.474 0 5.302-4.01 10.049-9.119 10.88v.277C75.317 46.394 80 51.21 80 57.863zM60.521 28.34H49.948v14.934h8.905c6.884 0 10.68-2.772 10.68-7.727 0-4.643-3.264-7.207-9.012-7.207zM49.948 49.2v16.458H60.91c7.167 0 10.964-2.876 10.964-8.281 0-5.406-3.903-8.178-11.425-8.178H49.948z"></path>
+        </symbol>
+
+        <symbol id="jobs" viewBox="0 0 16 16">
+            <path d="M5.5 7a.5.5 0 0 0 0 1h5a.5.5 0 0 0 0-1zM5 9.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5m0 2a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5"/>
+            <path d="M9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4.5zm0 1v2A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1z"/>
+        </symbol>
+
+        <symbol id="events" viewBox="0 0 16 16">
+            <path d="M14 0H2a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2M1 3.857C1 3.384 1.448 3 2 3h12c.552 0 1 .384 1 .857v10.286c0 .473-.448.857-1 .857H2c-.552 0-1-.384-1-.857z"/>
+            <path d="M6.5 7a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2m-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2m-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2"/>
+        </symbol>
+
+        <symbol id="locations-eye" viewBox="0 0 16 16">
+            <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6"/>
+        </symbol>
+
+        <symbol id="aboutUs" viewBox="0 0 16 16">
+        </symbol>
+
+        <symbol id="notifications" viewBox="0 0 16 16">
+            <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2m.995-14.901a1 1 0 1 0-1.99 0A5 5 0 0 0 3 6c0 1.098-.5 6-2 7h14c-1.5-1-2-5.902-2-7 0-2.42-1.72-4.44-4.005-4.901"/>
+        </symbol>
+    </svg>
+    <!-- ICONS FOR SIDEBAR END-->
+<!-- LOCATION UNSPECIFIC END -->
+
+
+<div id="full-page-container" class="d-flex container-fluid row m-0 p-0 h-100 g-0">
+
+    <div class="col-auto primary-nav p-0 m-0a">
+        <div class="primary-nav-tall h-100">
+            <!-- SIDEBAR START -->
+            <div class="h-100 d-flex flex-column flex-shrink-0 bg-body-tertiary" style="width: 4.5rem;">
+                <a href="#" class="d-block py-2 link-body-emphasis text-decoration-none" title="Yellowstone Natural Park Lodges" data-bs-toggle="tooltip" data-bs-placement="right">
+                    <!--            <svg class="bi pe-none" width="40" height="32"><use xlink:href="#bootstrap"/></svg>-->
+                    <img src="orignal-logo-yellowstone.gif" height="auto" width="100%"/>
+
+                    <span class="visually-hidden">Yellowstone Natural Park Lodges</span>
+                </a>
+                <ul class="nav nav-pills nav-flush flex-column mb-auto text-center">
+                    <li>
+                        <a href="#" class="active nav-link py-3 border-bottom rounded-0" title="Careers" aria-current="page"  data-bs-toggle="tooltip" data-bs-placement="right">
+                            <svg class="bi pe-none" width="24" height="24" role="img" aria-label="Dashboard"><use xlink:href="#jobs"/></svg>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="nav-link py-3 border-bottom rounded-0" title="Events" data-bs-toggle="tooltip" data-bs-placement="right">
+                            <svg class="bi pe-none" width="24" height="24" role="img" aria-label="Orders"><use xlink:href="#events"/></svg>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="nav-link py-3 border-bottom rounded-0" title="Notifications" data-bs-toggle="tooltip" data-bs-placement="right">
+                            <svg class="bi pe-none" width="24" height="24" role="img" aria-label="Notifications"><use xlink:href="#notifications"/></svg>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="nav-link py-3 border-bottom rounded-0" title="Locations" data-bs-toggle="tooltip" data-bs-placement="right">
+                            <svg class="bi pe-none" width="24" height="24" role="img" aria-label="Customers"><use xlink:href="#locations-eye"/></svg>
+                        </a>
+                    </li>
+                </ul>
+                <div class="dropdown border-top">
+                    <a href="#" class="d-flex align-items-center justify-content-center p-3 link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                        <img src="https://github.com/42null.png" alt="Account" width="24" height="24" class="rounded-circle">
+                    </a>
+                    <ul class="dropdown-menu text-small shadow">
+                        <li><a class="dropdown-item" href="#">Profile</a></li>
+                        <li><a class="dropdown-item" href="#">Themes</a></li>
+                        <li><a class="dropdown-item" href="#">Notification Settings</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item text-danger" href="#">Sign out</a></li>
+                    </ul>
+                </div>
+            </div>
+            <!-- SIDEBAR END -->
+        </div>
+
+    </div>
+    <div id="under-sidebar" class="col flex-grow-1 container w-100 p-0 h-100">
+        <div id="main-content" class="h-100 d-flex flex-column">
+            <header id="applying-for-header" class="bg-primary border-end-1">
+                <p class="text-center">Yellowstone Natural Park Lodges Job Application</p>
+                <div class="mx-4">
+                    <div class="progress" role="progressbar" aria-label="Success example" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+                        <div class="progress-bar bg-success" style="width: 0%"></div>
+                    </div>
+                </div>
+                <hr>
+            </header>
+            <div class="overflow-y-scroll container bg-secondary flex-grow-1 pb-5" id=""> <!-- Make not to be a container-fluid to make it easier on larger screens -->
+                <div class="jumbotron jumbotron-fluid mb-2">
+                    <div class="container">
+<!--                        FORM START-->
+                        <form class="row needs-validation" id="applicationForm" novalidate>
+                            <div class="application-page col-12">
+                                <h4 class="col-12 text-center"><span id="pageTitle">DEFAULT TITLE</span></h4>
+                            </div>
+                            <div class="application-page col-12">
+                                <div id="formPage1" class="col-12 row g-3 needs-validation">
+                                    <h3 class="display-4">Notice</h3>
+                                    <p class="lead">This application is expected to take <b>30 minutes</b>.
+                                        <br>
+                                        <br>
+                                        You will need the following information to complete this application and may wish to have them available before starting.
+                                    </p>
+                                    <ul>
+                                        <li>Your drivers license</li>
+                                        <li>Information on your last 3 positions of employment</li>
+                                    </ul>
+
+                                    <p>In addition, there are requirements that may affect your eligibility. Make sure that you answer them before starting.</p>
+
+                                    <div class="col-12">
+                                        <div class="form-check form-switch">
+                                            <input class="form-check-input" type="checkbox" value="" id="proofOfWorkEligibility" required>
+                                            <label class="form-check-label" for="proofOfWorkEligibility">
+                                                Can you provide proof that you are eligible to work in the United States?
+                                                <button type="button" class="bg-transparent border-0" data-bs-toggle="tooltip" data-bs-html="true" data-bs-title="In accordance with the Immigration Reform and Control Act of 1986, upon acceptance for employment you will be required to provide proof of your identity and eligibility to work in the United States.">
+                                                    <i class="bi bi-info-circle-fill"></i>
+                                                </button>
+                                            </label>
+                                            <div class="invalid-feedback">
+                                                Applicants must provide proof that they are eligible to work in the United States.
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row-cols-1">
+                                        <div class="form-check form-switch">
+                                            <input class="form-check-input" type="checkbox" value="" id="requiresSponsorship">
+                                            <label class="form-check-label" for="requiresSponsorship">
+                                                Will you require sponsorship?
+                                                <button type="button" class="bg-transparent border-0" data-bs-toggle="tooltip" data-bs-html="true" data-bs-title="TODO: PACE TOOLTIP HERE">
+                                                    <i class="bi bi-info-circle-fill"></i>
+                                                </button>
+                                            </label>
+                                            <div class="invalid-feedback">
+                                                Applicants must provide proof that they are eligible to work in the United States.
+                                            </div>
+                                        </div>
+                                        <div id="requiresSponsorshipExpand" class="d-none ms-4">
+                                            <label for="TODO">International applicants must have one of the following sponsoring agencies</label>
+                                            <div>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="radio" name="flexRadioSelectSponsor" id="selectSponsorASPIRE" required>
+                                                    <label class="form-check-label" for="flexRadioDefault1">
+                                                        ASPIRE
+                                                    </label>
+                                                </div>
+
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="radio" name="flexRadioSelectSponsor" id="selectSponsorCIEE" required>
+                                                    <label class="form-check-label" for="flexRadioDefault2">
+                                                        CIEE
+                                                    </label>
+                                                </div>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="radio" name="flexRadioSelectSponsor" id="selectSponsorCCUSA" required>
+                                                    <label class="form-check-label" for="flexRadioDefault2">
+                                                        CCUSA
+                                                    </label>
+                                                </div>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="radio" name="flexRadioSelectSponsor" id="selectSponsorINTEREXCHANGE" required>
+                                                    <label class="form-check-label" for="flexRadioDefault2">
+                                                        INTEREXCHANGE
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-check form-switch">
+                                            <input class="form-check-input" type="checkbox" value="" id="atLeast18">
+                                            <label class="form-check-label" for="requiresSponsorship">
+                                                Will you be 18 years of age or older when you arrive in Yellowstone?
+                                                <button type="button" class="bg-transparent border-0" data-bs-toggle="tooltip" data-bs-html="true" data-bs-title="You must be 18 years of age or older to live in employee housing.">
+                                                    <i class="bi bi-info-circle-fill"></i>
+                                                </button>
+                                            </label>
+                                        </div>
+                                        <div id="atLeast18Expand" class="d-none ms-4">
+                                            <div class="form-check form-switch">
+                                                <input class="form-check-input" type="checkbox" value="" id="atLeast21">
+                                                <label class="form-check-label" for="requiresSponsorship">
+                                                    Will you be 21 years of age or older when you arrive in Yellowstone?
+                                                    <button type="button" class="bg-transparent border-0" data-bs-toggle="tooltip" data-bs-html="true" data-bs-title="Employees must be 21 years of age or older for jobs requiring the operation of certain vehicles or serving alcohol in lounges/pubs.">
+                                                        <i class="bi bi-info-circle-fill"></i>
+                                                    </button>
+                                                </label>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-check form-switch">
+                                            <input class="form-check-input" type="checkbox" value="" id="convicted">
+                                            <label class="form-check-label" for="convicted">
+                                                Have you ever been convicted of a felony (including any pleas of "guilty" or "no contest") <b>or</b> do you have any outstanding warrants?
+                                                <button type="button" class="bg-transparent border-0" data-bs-toggle="tooltip" data-bs-html="true" data-bs-title="A Background Check is completed on all employees upon arrival to Yellowstone. (Note: Conviction of a crime is not an automatic ban to employment - circumstances will be considered.)">
+                                                    <i class="bi bi-info-circle-fill"></i>
+                                                </button>
+                                            </label>
+                                        </div>
+                                        <div id="convictedExpand" class="d-none ms-4">
+<!--                                            TODO: Add max width-->
+                                            <div class="form-check">
+                                                <div class="row">
+                                                    <div class="col-md-8">
+                                                        <label class="form-check-label" for="requiresSponsorship">
+                                                        </label>
+                                                        <label for="stateDetailsOfConviction" class="form-label">State the details of your conviction</label>
+                                                        <textarea type="text" class="form-control" id="stateDetailsOfConviction" value="" required></textarea>
+                                                        <div class="valid-feedback">
+                                                            Details provided!
+    <!--                                                        TODO: Make it check for a minimum length-->
+                                                        </div>
+                                                        <div class="invalid-feedback">
+                                                            You need to provide details on your conviction
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <label for="stateDetailsOfConviction" class="form-label">State the date of your conviction</label><!-- TODO: Make able to take multiple dates -->
+                                                        <input type="date" class="form-control" id="stateDateOfConviction" value="" required>
+                                                        <div class="valid-feedback">
+                                                            Date provided!
+                                                            <!--                                                        TODO: Make it check for a minimum length-->
+                                                        </div>
+                                                        <div class="invalid-feedback">
+                                                            You need to provide the date on your conviction
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+
+
+
+
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <footer id="bottom-nav-pagination" aria-label="Page navigation example" class="position-absolute bottom-0 start-50 translate-middle w-auto">
+                                <ul id="continueOnlyIfAllAccepted" class="m-0 pagination justify-content-center">
+                                    <li class="page-item">
+                                        <div class="col-12">
+                                            <button class="btn btn-primary" id="startApplicationButton" type="submit">Start Application</button>
+                                        </div>
+                                    </li>
+                                </ul>
+                                <ul id="paginationAfter" class="pagination d-none justify-content-center">
+                                    <li class="page-item disabled">
+                                        <a class="page-link">Previous</a>
+                                    </li>
+                                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                    <li class="page-item">
+                                        <a class="page-link" href="#">Next</a>
+                                    </li>
+                                </ul>
+
+                            </footer>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+<script src="YellowstoneJobs.js"></script>
+
 </body>
 </html>
