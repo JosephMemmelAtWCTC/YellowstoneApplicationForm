@@ -115,150 +115,12 @@
                             <div class="application-page col-12">
                                 <h4 class="col-12 text-center"><span id="pageTitle">DEFAULT TITLE</span></h4>
                             </div>
-                            <div class="application-page col-12">
-                                <div id="formPage1" class="col-12 row g-3 needs-validation">
-                                    <h3 class="display-4">Notice</h3>
-                                    <p class="lead">This application is expected to take <b>30 minutes</b>.
-                                        <br>
-                                        <br>
-                                        You will need the following information to complete this application and may wish to have them available before starting.
-                                    </p>
-                                    <ul>
-                                        <li>Your drivers license</li>
-                                        <li>Information on your last 3 positions of employment</li>
-                                    </ul>
+                            <div class="application-page col-12" id="insideFormActiveHoldingAreaParent">
 
-                                    <p>In addition, there are requirements that may affect your eligibility. Make sure that you answer them before starting.</p>
-
-                                    <div class="col-12">
-                                        <div class="form-check form-switch">
-                                            <input class="form-check-input" type="checkbox" value="" id="proofOfWorkEligibility" required>
-                                            <label class="form-check-label" for="proofOfWorkEligibility">
-                                                Can you provide proof that you are eligible to work in the United States?
-                                                <button type="button" class="bg-transparent border-0" data-bs-toggle="tooltip" data-bs-html="true" data-bs-title="In accordance with the Immigration Reform and Control Act of 1986, upon acceptance for employment you will be required to provide proof of your identity and eligibility to work in the United States.">
-                                                    <i class="bi bi-info-circle-fill"></i>
-                                                </button>
-                                            </label>
-                                            <div class="invalid-feedback">
-                                                Applicants must provide proof that they are eligible to work in the United States.
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row-cols-1">
-                                        <div class="form-check form-switch">
-                                            <input class="form-check-input" type="checkbox" value="" id="requiresSponsorship">
-                                            <label class="form-check-label" for="requiresSponsorship">
-                                                Will you require sponsorship?
-                                                <button type="button" class="bg-transparent border-0" data-bs-toggle="tooltip" data-bs-html="true" data-bs-title="TODO: PACE TOOLTIP HERE">
-                                                    <i class="bi bi-info-circle-fill"></i>
-                                                </button>
-                                            </label>
-                                            <div class="invalid-feedback">
-                                                Applicants must provide proof that they are eligible to work in the United States.
-                                            </div>
-                                        </div>
-                                        <div id="requiresSponsorshipExpand" class="d-none ms-4">
-                                            <label for="TODO">International applicants must have one of the following sponsoring agencies</label>
-                                            <div>
-                                                <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="radio" name="flexRadioSelectSponsor" id="selectSponsorASPIRE" required>
-                                                    <label class="form-check-label" for="flexRadioDefault1">
-                                                        ASPIRE
-                                                    </label>
-                                                </div>
-
-                                                <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="radio" name="flexRadioSelectSponsor" id="selectSponsorCIEE" required>
-                                                    <label class="form-check-label" for="flexRadioDefault2">
-                                                        CIEE
-                                                    </label>
-                                                </div>
-                                                <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="radio" name="flexRadioSelectSponsor" id="selectSponsorCCUSA" required>
-                                                    <label class="form-check-label" for="flexRadioDefault2">
-                                                        CCUSA
-                                                    </label>
-                                                </div>
-                                                <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="radio" name="flexRadioSelectSponsor" id="selectSponsorINTEREXCHANGE" required>
-                                                    <label class="form-check-label" for="flexRadioDefault2">
-                                                        INTEREXCHANGE
-                                                    </label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="form-check form-switch">
-                                            <input class="form-check-input" type="checkbox" value="" id="atLeast18">
-                                            <label class="form-check-label" for="requiresSponsorship">
-                                                Will you be 18 years of age or older when you arrive in Yellowstone?
-                                                <button type="button" class="bg-transparent border-0" data-bs-toggle="tooltip" data-bs-html="true" data-bs-title="You must be 18 years of age or older to live in employee housing.">
-                                                    <i class="bi bi-info-circle-fill"></i>
-                                                </button>
-                                            </label>
-                                        </div>
-                                        <div id="atLeast18Expand" class="d-none ms-4">
-                                            <div class="form-check form-switch">
-                                                <input class="form-check-input" type="checkbox" value="" id="atLeast21">
-                                                <label class="form-check-label" for="requiresSponsorship">
-                                                    Will you be 21 years of age or older when you arrive in Yellowstone?
-                                                    <button type="button" class="bg-transparent border-0" data-bs-toggle="tooltip" data-bs-html="true" data-bs-title="Employees must be 21 years of age or older for jobs requiring the operation of certain vehicles or serving alcohol in lounges/pubs.">
-                                                        <i class="bi bi-info-circle-fill"></i>
-                                                    </button>
-                                                </label>
-                                            </div>
-                                        </div>
-
-                                        <div class="form-check form-switch">
-                                            <input class="form-check-input" type="checkbox" value="" id="convicted">
-                                            <label class="form-check-label" for="convicted">
-                                                Have you ever been convicted of a felony (including any pleas of "guilty" or "no contest") <b>or</b> do you have any outstanding warrants?
-                                                <button type="button" class="bg-transparent border-0" data-bs-toggle="tooltip" data-bs-html="true" data-bs-title="A Background Check is completed on all employees upon arrival to Yellowstone. (Note: Conviction of a crime is not an automatic ban to employment - circumstances will be considered.)">
-                                                    <i class="bi bi-info-circle-fill"></i>
-                                                </button>
-                                            </label>
-                                        </div>
-                                        <div id="convictedExpand" class="d-none ms-4">
-<!--                                            TODO: Add max width-->
-                                            <div class="form-check">
-                                                <div class="row">
-                                                    <div class="col-md-8">
-                                                        <label class="form-check-label" for="requiresSponsorship">
-                                                        </label>
-                                                        <label for="stateDetailsOfConviction" class="form-label">State the details of your conviction</label>
-                                                        <textarea type="text" class="form-control" id="stateDetailsOfConviction" value="" required></textarea>
-                                                        <div class="valid-feedback">
-                                                            Details provided!
-    <!--                                                        TODO: Make it check for a minimum length-->
-                                                        </div>
-                                                        <div class="invalid-feedback">
-                                                            You need to provide details on your conviction
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-4">
-                                                        <label for="stateDetailsOfConviction" class="form-label">State the date of your conviction</label><!-- TODO: Make able to take multiple dates -->
-                                                        <input type="date" class="form-control" id="stateDateOfConviction" value="" required>
-                                                        <div class="valid-feedback">
-                                                            Date provided!
-                                                            <!--                                                        TODO: Make it check for a minimum length-->
-                                                        </div>
-                                                        <div class="invalid-feedback">
-                                                            You need to provide the date on your conviction
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+<!-- End of moved into form -->
 
 
-
-
-
-
-                                    </div>
-                                </div>
                             </div>
-
-
                             <footer id="bottom-nav-pagination" aria-label="Page navigation example" class="position-absolute bottom-0 start-50 translate-middle w-auto">
                                 <ul id="continueOnlyIfAllAccepted" class="m-0 pagination justify-content-center">
                                     <li class="page-item">
@@ -267,7 +129,7 @@
                                         </div>
                                     </li>
                                 </ul>
-                                <ul id="paginationAfter" class="pagination d-none justify-content-center">
+                                <ul id="paginationAfter" class="pagination justify-content-center">
                                     <li class="page-item disabled">
                                         <a class="page-link">Previous</a>
                                     </li>
@@ -288,6 +150,204 @@
         </div>
     </div>
 </div>
+
+<!-- HIDDEN FORM PAGES THAT GET MOVED INTO FORM WHEN ON PAGE START-->
+<div class="d-none" id="movedOutOfFormHoldingArea">
+<!-- FORM PAGE#1 -->
+<div id="formPage1" class="formPage col-12 row g-3 needs-validation">
+    <h3 class="display-4">Notice</h3>
+    <p class="lead">This application is expected to take <b>30 minutes</b>.
+        <br>
+        <br>
+        You will need the following information to complete this application and may wish to have them available before starting.
+    </p>
+    <ul>
+        <li>Your drivers license</li>
+        <li>Information on your last 3 positions of employment</li>
+    </ul>
+
+    <p>In addition, there are requirements that may affect your eligibility. Make sure that you answer them before starting.</p>
+
+    <div class="col-12">
+        <div class="form-check form-switch">
+            <input class="form-check-input required" type="checkbox" value="" id="proofOfWorkEligibility" >
+            <label class="form-check-label" for="proofOfWorkEligibility">
+                Can you provide proof that you are eligible to work in the United States?
+                <button type="button" class="bg-transparent border-0" data-bs-toggle="tooltip" data-bs-html="true" data-bs-title="In accordance with the Immigration Reform and Control Act of 1986, upon acceptance for employment you will be required to provide proof of your identity and eligibility to work in the United States.">
+                    <i class="bi bi-info-circle-fill"></i>
+                </button>
+            </label>
+            <div class="invalid-feedback">
+                Applicants must provide proof that they are eligible to work in the United States.
+            </div>
+        </div>
+    </div>
+    <div class="row-cols-1">
+        <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" value="" id="requiresSponsorship">
+            <label class="form-check-label" for="requiresSponsorship">
+                Will you require sponsorship?
+                <button type="button" class="bg-transparent border-0" data-bs-toggle="tooltip" data-bs-html="true" data-bs-title="TODO: PACE TOOLTIP HERE">
+                    <i class="bi bi-info-circle-fill"></i>
+                </button>
+            </label>
+            <div class="invalid-feedback">
+                Applicants must provide proof that they are eligible to work in the United States.
+            </div>
+        </div>
+        <div id="requiresSponsorshipExpand" class="d-none ms-4">
+            <label for="TODO">International applicants must have one of the following sponsoring agencies</label>
+            <div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input required" type="radio" name="flexRadioSelectSponsor" id="selectSponsorASPIRE" >
+                    <label class="form-check-label" for="flexRadioDefault1">
+                        ASPIRE
+                    </label>
+                </div>
+
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input required" type="radio" name="flexRadioSelectSponsor" id="selectSponsorCIEE" >
+                    <label class="form-check-label" for="flexRadioDefault2">
+                        CIEE
+                    </label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input required" type="radio" name="flexRadioSelectSponsor" id="selectSponsorCCUSA" >
+                    <label class="form-check-label" for="flexRadioDefault2">
+                        CCUSA
+                    </label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input required" type="radio" name="flexRadioSelectSponsor" id="selectSponsorINTEREXCHANGE" >
+                    <label class="form-check-label" for="flexRadioDefault2">
+                        INTEREXCHANGE
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="form-check form-switch">
+            <input class="form-check-input expands" type="checkbox" value="" id="atLeast18">
+            <label class="form-check-label" for="requiresSponsorship">
+                Will you be 18 years of age or older when you arrive in Yellowstone?
+                <button type="button" class="bg-transparent border-0" data-bs-toggle="tooltip" data-bs-html="true" data-bs-title="You must be 18 years of age or older to live in employee housing.">
+                    <i class="bi bi-info-circle-fill"></i>
+                </button>
+            </label>
+        </div>
+        <div id="atLeast18Expand" class="d-none ms-4 expanded">
+            <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" value="" id="atLeast21">
+                <label class="form-check-label" for="requiresSponsorship">
+                    Will you be 21 years of age or older when you arrive in Yellowstone?
+                    <button type="button" class="bg-transparent border-0" data-bs-toggle="tooltip" data-bs-html="true" data-bs-title="Employees must be 21 years of age or older for jobs requiring the operation of certain vehicles or serving alcohol in lounges/pubs.">
+                        <i class="bi bi-info-circle-fill"></i>
+                    </button>
+                </label>
+            </div>
+        </div>
+
+        <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" value="" id="convicted">
+            <label class="form-check-label" for="convicted">
+                Have you ever been convicted of a felony (including any pleas of "guilty" or "no contest") <b>or</b> do you have any outstanding warrants?
+                <button type="button" class="bg-transparent border-0" data-bs-toggle="tooltip" data-bs-html="true" data-bs-title="A Background Check is completed on all employees upon arrival to Yellowstone. (Note: Conviction of a crime is not an automatic ban to employment - circumstances will be considered.)">
+                    <i class="bi bi-info-circle-fill"></i>
+                </button>
+            </label>
+        </div>
+        <div id="convictedExpand" class="d-none ms-4">
+            <!--                                            TODO: Add max width-->
+            <div class="form-check">
+                <div class="row">
+                    <div class="col-md-8">
+                        <label class="form-check-label" for="requiresSponsorship">
+                        </label>
+                        <label for="stateDetailsOfConviction" class="form-label">State the details of your conviction</label>
+                        <textarea type="text" class="form-control required" id="stateDetailsOfConviction" value="" ></textarea>
+                        <div class="valid-feedback">
+                            Details provided!
+                            <!--                                                        TODO: Make it check for a minimum length-->
+                        </div>
+                        <div class="invalid-feedback">
+                            You need to provide details on your conviction
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="stateDetailsOfConviction" class="form-label">State the date of your conviction</label><!-- TODO: Make able to take multiple dates -->
+                        <input type="date" class="form-control required" id="stateDateOfConviction" value="" >
+                        <div class="valid-feedback">
+                            Date provided
+                            <!--                                                        TODO: Make it check for a minimum length-->
+                        </div>
+                        <div class="invalid-feedback">
+                            You need to provide the date on your conviction
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- FORM PAGE#2 -->
+<div id="formPage2" class="formPage col-12 row g-3 needs-validation" data-section="Personal Information">
+    <div class="row-cols-1">
+
+        <div class="col-md-4">
+            <label for="validationCustom01" class="form-label">First name</label>
+            <input type="text" class="form-control required" id="validationCustom01" value="Mark" >
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+        </div>
+        <div class="col-md-4">
+            <label for="validationCustom02" class="form-label">Last name</label>
+            <input type="text" class="form-control required" id="validationCustom02" value="Otto" >
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+        </div>
+        <div class="col-md-4">
+            <label for="validationCustomUsername" class="form-label">Username</label>
+            <div class="input-group has-validation">
+                <span class="input-group-text" id="inputGroupPrepend">@</span>
+                <input type="text" class="form-control required" id="validationCustomUsername" aria-describedby="inputGroupPrepend" >
+                <div class="invalid-feedback">
+                    Please choose a username.
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <label for="validationCustom03" class="form-label">City</label>
+            <input type="text" class="form-control required" id="validationCustom03" >
+            <div class="invalid-feedback">
+                Please provide a valid city.
+            </div>
+        </div>
+        <div class="col-md-4">
+            <label for="validationCustom04" class="form-label">State</label>
+            <select class="form-select required" id="validationCustom04" >
+                <option selected disabled value="">Choose...</option>
+                <option>...</option>
+            </select>
+            <div class="invalid-feedback">
+                Please select a valid state.
+            </div>
+        </div>
+        <div class="col-md-4">
+            <label for="validationCustom05" class="form-label">Zip</label>
+            <input type="text" class="form-control required" id="validationCustom05" >
+            <div class="invalid-feedback">
+                Please provide a valid zip.
+            </div>
+        </div>
+    </div>
+</div>
+
+</div>
+<!-- HIDDEN FORM PAGES THAT GET MOVED INTO FORM WHEN ON PAGE END -->
+
+
+
 
 <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
