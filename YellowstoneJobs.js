@@ -1,7 +1,13 @@
 
 $(function() {
 
-    const $startApplicationSubmitButton = $("#startApplicationButton");
+    // Paganation Buttons Start
+    const $startApplicationButton = $("#startApplicationButton");
+    const $moveToNextPageButton = $("#pageMoveToNext");
+    const $moveToPreviousPageButton = $("#pageMoveToPrevious");
+    // Paganation Buttons End
+
+
     const $continueOnlyIfAllAcceptedSubmitSection = $("#continueOnlyIfAllAccepted");
     const $paginationAfter = $("#paginationAfter");
     const $applicationFooter = $("#bottom-nav-pagination");
@@ -40,8 +46,18 @@ $(function() {
             this.$applicationProgressBar.attr("aria-valuenow", percentage);
         }
 
-        loadIntoApplication(){
+        loadPageIntoApplication(){
             currentPage = this;
+            if(typeof currentPage.previous === "undefined"){
+                $moveToPreviousPageButton.attr("disabled", "disabled");
+            }else{
+                $moveToPreviousPageButton.removeAttr("disabled");
+            }
+            if(typeof currentPage.next === "undefined"){
+                $moveToNextPageButton.attr("disabled", "disabled");
+            }else{
+                $moveToNextPageButton.removeAttr("disabled");
+            }
 
             //Ensure only page
             // console.log("PagesCount +"+$allFormPages.length)
@@ -61,10 +77,17 @@ $(function() {
         }
 
         moveToNext(){
-            this.next.loadIntoApplication();
+            // Validate
+            this.$jqueryPageElement.addClass('was-validated');
+            if(this.$jqueryPageElement.find(':invalid').length > 0 ){
+                this.$jqueryPageElement.addClass('was-validated');
+                this.$jqueryPageElement.find(':invalid').first().focus();
+                return;
+            }
+            this.next.loadPageIntoApplication();
         }
         moveToPrevious(){
-            this.previous.loadIntoApplication();
+            this.previous.loadPageIntoApplication();
         }
     }
 
@@ -83,30 +106,44 @@ $(function() {
 
             const accordion = document.createElement("div");
             accordion.innerHTML =
-                `<div className="accordion">
+                `
+                <!--<div className="accordion">
                     <div className="accordion-item">
-                        <h2 className="accordion-header">
-                            <button className="accordion-button" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#panelsStayOpen-${jobCategory}" aria-expanded="false"
-                                    aria-controls="panelsStayOpen-${jobCategory}">
-                                ${jobCategoryName}
-                            </button>
+                        <h2 class="accordion-header">
+                          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-${jobCategory}" aria-expanded="false" aria-controls="panelsStayOpen-${jobCategory}">
+                            <span class="text-center w-100">${jobCategoryName}</span>
+                          </button>
                         </h2>
-                        <div id="panelsStayOpen-${jobCategory}" className="accordion-collapse collapse show">
-                            <div className="accordion-body" class="accordion-body">
+                        <div id="panelsStayOpen-${jobCategory}" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
                             </div>
                         </div>
                     </div>
-    
-                </div>`;
+                </div>-->
+                <div class="accordion accordion-flush" id="accordionFlushExample">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-${jobCategory}" aria-expanded="false" aria-controls="flush-collapseOne">
+                                <span class="text-center w-100">${jobCategoryName}</span>
+                            </button>
+                        </h2>
+                            <div id="panelsStayOpen-${jobCategory}" class="accordion-collapse collapse" data-bs-parent="#panelsStayOpen-${jobCategory}">
+                            <div class="accordion-body"></div>
+                        </div>
+                    </div>
+                </div>
+
+`;
             const accordionBody = accordion.querySelector(".accordion-body");
 
             for (const job of jobsMade) {
                 const tempDiv = document.createElement("div");
                 // console.log(job)
                 const id = job.jobTitle.replaceAll(" ","");
-                tempDiv.innerHTML = `<input className="form-check-input mt-0" type="checkbox" id="${id}">
-                                     <label class="form-check-label" for="${id}">${job.jobTitle}</label>`;
+                tempDiv.innerHTML = `<div class="input-group">
+                                        <input className="form-check-input mt-0" type="checkbox" id="${id}">
+                                        <label class="form-check-label text-wrap" for="${id}">${job.jobTitle}</label>
+                                     </div>`;
                 accordionBody.appendChild(tempDiv);
             }
 
@@ -115,7 +152,10 @@ $(function() {
     }
 
     const foodRelatedJobs = new JobList("Food Related", ["Dining Room Server Assistant***", "Employee Dining Room Crew***", "Fast Food Crew***", "Kitchen Crew***", "Room Attendant***", "Activities Sales Agent", "Bar Lead", "Barista", "Bartender", "Cocktail Server", "Cook", "Dining Room Host", "Dining Room Host Lead", "Dining Room Management", "Dining Room Server", "Employee Pub Crew/Lead", "Fast Food Management", "Food and Beverage Management", "Housekeeping Room Inspector", "Housekeeping Trainer", "Pantry Supervisor", "Snack Shop / Deli Supervisor", "Sous Chef", "Steward", "Storekeeper", "Wrangler/Driver"]);
+    const transportationRelatedJobs = new JobList("Transportation Related", ["Bus Driver/Guide (D.L.)", "Bus Service Person (D.L.)", "Distribution Center Truck Driver (D.L.)", "Tour Guide (D.L.)", "Touring Car Driver- Interpretive Guide Non CDL (D.L.)", "Traveling Night Auditor", "Warehouse Driver (OFI)"]);
+
     document.getElementById("foodRelatedJobs").appendChild(foodRelatedJobs);
+    document.getElementById("transportationRelatedJobs").appendChild(transportationRelatedJobs);
 
     // PAGES
     let displayIndex = 1;
@@ -125,7 +165,7 @@ $(function() {
         new ApplicationPage(displayIndex++, "#formPage2", $paginationAfter, 10),
         new ApplicationPage(displayIndex++, "#formPage3", $paginationAfter, 20),
     ];
-    pages[0].loadIntoApplication();
+    pages[0].loadPageIntoApplication();
 
 
     // Setup pagination
@@ -137,6 +177,13 @@ $(function() {
         pages[i].previous = pages[i-1];
     }
 
+    // Events for page movement
+    ($startApplicationButton.add($moveToNextPageButton)).on('click', (e) => {
+        currentPage.moveToNext();
+    });
+    $moveToPreviousPageButton.on('click', (e) => {
+        currentPage.moveToPrevious();
+    });
 
     const expandBasedOnAnswerToggle = [
         ["#requiresSponsorship", "#requiresSponsorshipExpand"],
@@ -173,49 +220,45 @@ $(function() {
     // })
 
 
-
-
-
-
-    (() => {
-        'use strict'
-
-        // Fetch all the forms we want to apply custom Bootstrap validation styles to
-        const forms = document.querySelectorAll('.needs-validation')
-
-        // Loop over them and prevent submission
-        Array.from(forms).forEach(form => {
-            form.addEventListener('submit', event => {
-                let completelyValidated = true;
-
-                event.preventDefault()
-                if (!form.checkValidity()) {
-                    event.stopPropagation()
-                    completelyValidated = false;
-                }
-                form.classList.add('was-validated')
-
-                // console.log(event.submitter);
-                const submitterId = event.submitter.id;
-
-                if(submitterId === "pageMoveToPrevious"){
-                    currentPage.moveToPrevious();
-                }
-                if(completelyValidated){
-                    form.classList.add("completelyValidated");
-                    console.log(`Page "#${form.id}" validated`);
-
-                    if(submitterId === "startApplicationButton" || submitterId === "pageMoveToNext"){
-                        currentPage.moveToNext();
-                    }else{
-                        currentPage.moveToNext();
-                    }
-                }else{
-                    console.log(`Page "#${form.id}" unable to  be validatidated`);
-                }
-            }, false)
-        })
-    })()
+    // (() => {
+    //     'use strict'
+    //
+    //     // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    //     const forms = document.querySelectorAll('.needs-validation')
+    //
+    //     // Loop over them and prevent submission
+    //     Array.from(forms).forEach(form => {
+    //         form.addEventListener('submit', event => {
+    //             let completelyValidated = true;
+    //
+    //             event.preventDefault()
+    //             if (!form.checkValidity()) {
+    //                 event.stopPropagation()
+    //                 completelyValidated = false;
+    //             }
+    //             form.classList.add('was-validated')
+    //
+    //             // console.log(event.submitter);
+    //             const submitterId = event.submitter.id;
+    //
+    //             if(submitterId === "pageMoveToPrevious"){
+    //                 currentPage.moveToPrevious();
+    //             }
+    //             if(completelyValidated){
+    //                 form.classList.add("completelyValidated");
+    //                 console.log(`Page "#${form.id}" validated`);
+    //
+    //                 if(submitterId === "startApplicationButton" || submitterId === "pageMoveToNext"){
+    //                     currentPage.moveToNext();
+    //                 }else{
+    //                     currentPage.moveToNext();
+    //                 }
+    //             }else{
+    //                 console.log(`Page "#${form.id}" unable to  be validatidated`);
+    //             }
+    //         }, false)
+    //     })
+    // })()
 });
 
 const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
