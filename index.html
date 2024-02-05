@@ -293,7 +293,15 @@
     </div>
 </div>
 <!-- FORM PAGE#2 -->
-<div id="formPage2" class="formPage col-12 row g-3 needs-validation" data-section="Personal Information">
+<div id="formPage2" class="formPage col-12 row g-3 needs-validation" data-section="Job Selection">
+    <div class="row-cols-1 row-cols-md-2 row-cols-lg-3 row d-flex justify-content-center pt-4">
+        <div class="" id="foodRelatedJobs">
+
+        </div>
+    </div>
+</div>
+<!-- FORM PAGE#3 -->
+<div id="formPage3" class="formPage col-12 row g-3 needs-validation" data-section="Personal Information">
     <div class="row-cols-1 row-cols-md-1 row d-flex justify-content-center">
 
         <div class="">
@@ -575,6 +583,22 @@
             <input type="text" class="form-control required" id="zip" required>
             <div class="invalid-feedback">
                 Please provide a valid zip.
+            </div>
+        </div>
+        <div class="">
+            <label for="phone" class="form-label">Contact Phone #</label>
+            <input type="tel" class="form-control" id="phone" aria-describedby="phoneHelp" required>
+<!--            <div id="phoneHelp" class="form-text">We'll never share your email with anyone else.</div>-->
+            <div class="invalid-feedback">
+                Please provide a valid phone number.
+            </div>
+        </div>
+        <div class="">
+            <label for="exampleInputEmail1" class="form-label">Email address</label>
+            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required>
+<!--            <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>-->
+            <div class="invalid-feedback">
+                Please provide a valid email.
             </div>
         </div>
     </div>

@@ -68,18 +68,68 @@ $(function() {
         }
     }
 
+    class JobList {
+        constructor(jobCategoryName, jobsStrings) {
+            const jobCategory = jobCategoryName.replaceAll(" ","");
+            const jobsMade = [];
+            for(const jobString of jobsStrings){
+                jobsMade.push(
+                    {
+                        jobTitle: jobString.replaceAll("***", "").replaceAll("(D.L.)", ""),
+                        requiresDriversLicence: jobString.includes("(D.L.)"),
+                    }
+                );
+            }
+
+            const accordion = document.createElement("div");
+            accordion.innerHTML =
+                `<div className="accordion">
+                    <div className="accordion-item">
+                        <h2 className="accordion-header">
+                            <button className="accordion-button" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#panelsStayOpen-${jobCategory}" aria-expanded="false"
+                                    aria-controls="panelsStayOpen-${jobCategory}">
+                                ${jobCategoryName}
+                            </button>
+                        </h2>
+                        <div id="panelsStayOpen-${jobCategory}" className="accordion-collapse collapse show">
+                            <div className="accordion-body" class="accordion-body">
+                            </div>
+                        </div>
+                    </div>
+    
+                </div>`;
+            const accordionBody = accordion.querySelector(".accordion-body");
+
+            for (const job of jobsMade) {
+                const tempDiv = document.createElement("div");
+                // console.log(job)
+                const id = job.jobTitle.replaceAll(" ","");
+                tempDiv.innerHTML = `<input className="form-check-input mt-0" type="checkbox" id="${id}">
+                                     <label class="form-check-label" for="${id}">${job.jobTitle}</label>`;
+                accordionBody.appendChild(tempDiv);
+            }
+
+            return accordion;
+        }
+    }
+
+    const foodRelatedJobs = new JobList("Food Related", ["Dining Room Server Assistant***", "Employee Dining Room Crew***", "Fast Food Crew***", "Kitchen Crew***", "Room Attendant***", "Activities Sales Agent", "Bar Lead", "Barista", "Bartender", "Cocktail Server", "Cook", "Dining Room Host", "Dining Room Host Lead", "Dining Room Management", "Dining Room Server", "Employee Pub Crew/Lead", "Fast Food Management", "Food and Beverage Management", "Housekeeping Room Inspector", "Housekeeping Trainer", "Pantry Supervisor", "Snack Shop / Deli Supervisor", "Sous Chef", "Steward", "Storekeeper", "Wrangler/Driver"]);
+    document.getElementById("foodRelatedJobs").appendChild(foodRelatedJobs);
 
     // PAGES
     let displayIndex = 1;
     // TODO: Turn into a class
     const pages = [
         new ApplicationPage(displayIndex++, "#formPage1", $continueOnlyIfAllAcceptedSubmitSection, 0),
-        new ApplicationPage(displayIndex++, "#formPage2", $paginationAfter, 20),
+        new ApplicationPage(displayIndex++, "#formPage2", $paginationAfter, 10),
+        new ApplicationPage(displayIndex++, "#formPage3", $paginationAfter, 20),
     ];
     pages[0].loadIntoApplication();
 
 
     // Setup pagination
+
     for(let i = 0; i < pages.length-1; i++) {
         pages[i].next = pages[i+1];
     }
@@ -116,6 +166,14 @@ $(function() {
         }
 
     }
+
+    // Models
+    // $('#myModal').on('shown.bs.modal', function () {
+    //     $('#myInput').trigger('focus')
+    // })
+
+
+
 
 
 
