@@ -23,3 +23,7 @@ body{
 body .nav-pills{
     --bs-nav-pills-link-active-bg: var(--bs-primary)
 }
+
+.formPage{
+    max-width: 800px;
+}
