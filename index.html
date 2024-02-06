@@ -112,7 +112,7 @@
                     <div class="container">
 <!--                        FORM START-->
                         <form class="row needs-validation" id="applicationForm" novalidate>
-                            <div class="application-page col-12">
+                            <div class="application-page col-12 mb-2">
                                 <h4 class="col-12 text-center"><span id="pageTitle">DEFAULT TITLE</span></h4>
                             </div>
                             <div class="application-page col-12 d-flex justify-content-center" id="insideFormActiveHoldingAreaParent">
@@ -159,7 +159,7 @@
 <!-- HIDDEN FORM PAGES THAT GET MOVED INTO FORM WHEN ON PAGE START-->
 <div class="d-none" id="movedOutOfFormHoldingArea">
 <!-- FORM PAGE#1 -->
-<div id="formPage1" class="formPage col-12 row g-3 needs-validation">
+<div id="formPage1" data-section="Before You Start..." class="formPage col-12 row g-3 needs-validation">
     <h3 class="display-4">Notice</h3>
     <p class="lead">This application is expected to take <b>30 minutes</b>.
         <br>
@@ -278,7 +278,7 @@
                         </div>
                     </div>
                     <div class="col-md-4">
-                        <label for="stateDetailsOfConviction" class="form-label">State the date of your conviction</label><!-- TODO: Make able to take multiple dates -->
+                        <label for="stateDetailsOfConviction" class="form-label">State the date of your conviction</label>
                         <input type="date" class="form-control required" id="stateDateOfConviction" value="" >
                         <div class="valid-feedback">
                             Date provided
@@ -296,9 +296,26 @@
 <!-- FORM PAGE#2 -->
 <!--<div id="formPage2" class="formPage col-12 row g-3" data-section="Job Selection">-->
 <div id="formPage2" data-section="Job Selection" class="set-invalid formPage col-12 row g-3 atLeastOneCheckbox needs-validation row-cols-1 row-cols-md-2 row-cols-lg-3 row d-flex justify-content-center pt-4" required="" >
-        <div class="feedback-container w-100 feedback-container-one-line-height m-1">
+
+    <div class="row row-cols-md-2 w-100">
+        <div class="col">
+            <label for="dateCanStart" class="form-label">State the date you can start</label>
+            <input type="date" class="form-control required" id="dateCanStart" value="" required>
+            <div class="invalid-feedback">
+                You need to provide the date you can start
+            </div>
+        </div>
+        <div class="col">
+            <label for="dateCanEnd" class="form-label">State the date you will end</label>
+            <input type="date" class="form-control required" id="dateCanEnd" value="" >
+        </div>
+    </div>
+
+<!--    The Summer employment season ends near November 1st of each year. Please apply for a late October or early November end date if you are able to stay till the end of our season.-->
+
+    <div class="feedback-container w-100 feedback-container-one-line-height m-1">
             <div class="valid-feedback text-center">
-                Looks good!
+                You have picked at least one job!
             </div>
             <div class="invalid-feedback text-center">
                 Please select at least one checkbox.
@@ -340,17 +357,17 @@
             </div>
         </div>
         <div class="">
-            <label for="city" class="form-label">City</label>
-            <input type="text" class="form-control required" id="city" required>
-            <div class="invalid-feedback">
-                Please provide a valid city.
-            </div>
-        </div>
-        <div class="">
             <label for="address" class="form-label">Address</label>
             <input type="text" class="form-control required" id="address" required>
             <div class="invalid-feedback">
                 Please provide a valid address.
+            </div>
+        </div>
+        <div class="">
+            <label for="city" class="form-label">City</label>
+            <input type="text" class="form-control required" id="city" required>
+            <div class="invalid-feedback">
+                Please provide a valid city.
             </div>
         </div>
         <div class="">
@@ -614,7 +631,59 @@
         </div>
     </div>
 </div>
-
+</div>
+<!-- FORM PAGE#4 -->
+<div id="formPage4" class="formPage col-12 row g-3 needs-validation" data-section="Education">
+    <div class="row-cols-1 row-cols-md-1 row d-flex justify-content-center">
+<!--TODO: Add warning about number of spaces to add-->
+        <div class="p-2 border-primary border-1 bg-primary-subtle">
+            <div class="">
+    <!--            MAKE JS ADJUST LABELS WITH EMPTY FOR'S ASSIGN TO CLOSEST-->
+                <label for="" class="form-label">Institute Name</label>
+                <input type="text" class="form-control" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+                <div class="invalid-feedback">
+                    The name of the institution is required
+                </div>
+            </div>
+            <div class="">
+                <label for="" class="form-label">Location</label>
+                <input type="text" class="form-control" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+                <div class="invalid-feedback">
+                    The location of the institution is required
+                </div>
+            </div>
+            <div class="">
+                <label for="" class="form-label">Field of Study</label>
+                <input type="text" class="form-control" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+                <div class="invalid-feedback">
+                    Your field of study is required
+                </div>
+            </div>
+            <div class="">
+                <label for="" class="form-label">Degree Received</label>
+                <input type="text" class="form-control">
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+            <div class="form-check form-switch">
+                <input class="form-check-input required" type="checkbox" value="">
+                <label class="form-check-label" for="proofOfWorkEligibility">
+                    Did you graduate?
+                </label>
+            </div>
+        </div>
+    </div>
+</div>
 </div>
 <!-- HIDDEN FORM PAGES THAT GET MOVED INTO FORM WHEN ON PAGE END -->
 

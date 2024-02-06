@@ -184,13 +184,17 @@ $(function() {
 
     // PAGES
     let displayIndex = 1;
-    // TODO: Turn into a class
+    // TODO: Turn into a class?
     const pages = [
+        // TODO: PERCENTAGES
         new ApplicationPage(displayIndex++, "#formPage1", $continueOnlyIfAllAcceptedSubmitSection, 0),
         new ApplicationPage(displayIndex++, "#formPage2", $paginationAfter, 10),
         new ApplicationPage(displayIndex++, "#formPage3", $paginationAfter, 20),
+        new ApplicationPage(displayIndex++, "#formPage4", $paginationAfter, 30),
+        new ApplicationPage(displayIndex++, "#formPage4", $paginationAfter, 30),
     ];
     pages[0].loadPageIntoApplication();
+    // pages[3].loadPageIntoApplication();
 
 
     // Setup pagination
