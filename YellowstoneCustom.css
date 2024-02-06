@@ -27,3 +27,7 @@ body .nav-pills{
 .formPage{
     max-width: 800px;
 }
+
+.feedback-container-one-line-height{
+    min-height: 1em;
+}

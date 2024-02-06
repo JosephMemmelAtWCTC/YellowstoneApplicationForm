@@ -33,7 +33,7 @@ $(function() {
         constructor(showName, jquerySelector, $submitArea, startingPercentageInt){
             this.showName = showName;
             this.$jqueryPageElement = $(jquerySelector);
-            this.headerTitleText = $("#formPage2").data("section");
+            this.headerTitleText = this.$jqueryPageElement.data("section");
             this.$submitArea = $submitArea;
             this.startingPercentageInt = startingPercentageInt;
 
@@ -79,7 +79,8 @@ $(function() {
         moveToNext(){
             // Validate
             this.$jqueryPageElement.addClass('was-validated');
-            if(this.$jqueryPageElement.find(':invalid').length > 0 ){
+            // this.$jqueryPageElement.addClass("PPP");
+            if(this.$jqueryPageElement.find(':invalid').add(this.$jqueryPageElement.parent().find('.set-invalid')).length > 0){
                 this.$jqueryPageElement.addClass('was-validated');
                 this.$jqueryPageElement.find(':invalid').first().focus();
                 return;
@@ -90,6 +91,30 @@ $(function() {
             this.previous.loadPageIntoApplication();
         }
     }
+    // Custom - at least one checkbox
+    $('.atLeastOneCheckbox').on('change', function (e) {
+        const $areaToCheck = $(this);
+        const $feedbackContainer = $areaToCheck.find('.feedback-container');
+
+        if ($areaToCheck.find(":checked").length >= 1) {
+            $areaToCheck.removeClass('was-validated');
+            $areaToCheck.addClass('needs-validation');
+            $areaToCheck.removeClass('set-invalid');
+            $feedbackContainer.find('.invalid-feedback').hide();
+            $feedbackContainer.find('.valid-feedback').show();
+        } else {
+            e.preventDefault();
+            e.stopPropagation();
+            $areaToCheck.removeClass('needs-validation');
+            $areaToCheck.addClass('was-validated');
+            $feedbackContainer.find('.valid-feedback').hide();
+            $feedbackContainer.find('.invalid-feedback').show();
+            $areaToCheck.addClass('set-invalid');
+
+        }
+    });
+
+
 
     class JobList {
         constructor(jobCategoryName, jobsStrings) {

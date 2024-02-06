@@ -294,12 +294,21 @@
     </div>
 </div>
 <!-- FORM PAGE#2 -->
-<div id="formPage2" class="formPage col-12 row g-3 needs-validation" data-section="Job Selection">
-    <div class="row-cols-1 row-cols-md-2 row-cols-lg-3 row d-flex justify-content-center pt-4">
+<!--<div id="formPage2" class="formPage col-12 row g-3" data-section="Job Selection">-->
+<div id="formPage2" data-section="Job Selection" class="set-invalid formPage col-12 row g-3 atLeastOneCheckbox needs-validation row-cols-1 row-cols-md-2 row-cols-lg-3 row d-flex justify-content-center pt-4" required="" >
+        <div class="feedback-container w-100 feedback-container-one-line-height m-1">
+            <div class="valid-feedback text-center">
+                Looks good!
+            </div>
+            <div class="invalid-feedback text-center">
+                Please select at least one checkbox.
+            </div>
+        </div>
         <div class="" id="foodRelatedJobs">
         </div>
         <div class="" id="transportationRelatedJobs">
         </div>
+
     </div>
 </div>
 <!-- FORM PAGE#3 -->
