@@ -190,8 +190,7 @@ $(function() {
         new ApplicationPage(displayIndex++, "#formPage1", $continueOnlyIfAllAcceptedSubmitSection, 0),
         new ApplicationPage(displayIndex++, "#formPage2", $paginationAfter, 10),
         new ApplicationPage(displayIndex++, "#formPage3", $paginationAfter, 20),
-        new ApplicationPage(displayIndex++, "#formPage4", $paginationAfter, 30),
-        new ApplicationPage(displayIndex++, "#formPage4", $paginationAfter, 30),
+        new ApplicationPage(displayIndex++, "#formPageEducation", $paginationAfter, 30),
     ];
     pages[0].loadPageIntoApplication();
     // pages[3].loadPageIntoApplication();
@@ -221,7 +220,6 @@ $(function() {
     ];
     setupToggleOnChanges(expandBasedOnAnswerToggle);
 
-
     function setupToggleOnChanges(toggleParentWithUnhide){
         for(const togglePair of toggleParentWithUnhide) {
             // console.log("togglePair+"+togglePair[0]);
@@ -243,12 +241,59 @@ $(function() {
 
     }
 
-    // Models
-    // $('#myModal').on('shown.bs.modal', function () {
-    //     $('#myInput').trigger('focus')
-    // })
+    // Addboxes
+    const eductionBoxHtmlString = `<div class="p-2 border-primary border-1 bg-primary-subtle">
+        <div class="">
+            <label for="" class="form-label">Institute Name</label>
+            <input type="text" class="form-control" required>
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+            <div class="invalid-feedback">
+                The name of the institution is required
+            </div>
+        </div>
+        <div class="">
+            <label for="" class="form-label">Location</label>
+            <input type="text" class="form-control" required>
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+            <div class="invalid-feedback">
+                The location of the institution is required
+            </div>
+        </div>
+        <div class="">
+            <label for="" class="form-label">Field of Study</label>
+            <input type="text" class="form-control" required>
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+            <div class="invalid-feedback">
+                Your field of study is required
+            </div>
+        </div>
+        <div class="">
+            <label for="" class="form-label">Degree Received</label>
+            <input type="text" class="form-control">
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+        </div>
+        <div class="form-check form-switch">
+            <input class="form-check-input required" type="checkbox" value="">
+            <label class="form-check-label" for="proofOfWorkEligibility">
+                Did you graduate?
+            </label>
+        </div>
+    </div>`;
+
+    $("#educationBoxes").append(eductionBoxHtmlString);
 
 
+
+
+    // Orignal Validation
     // (() => {
     //     'use strict'
     //
