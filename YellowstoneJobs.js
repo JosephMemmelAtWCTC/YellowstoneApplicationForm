@@ -5,6 +5,7 @@ $(function() {
     const $startApplicationButton = $("#startApplicationButton");
     const $moveToNextPageButton = $("#pageMoveToNext");
     const $moveToPreviousPageButton = $("#pageMoveToPrevious");
+    // const $previousPage = $('#previousPage');
     // Paganation Buttons End
 
 
@@ -27,11 +28,12 @@ $(function() {
     // $insideFormActiveHoldingArea.append($formPage1);
 
     let currentPage = null;
+    let maxPageNum = null;
 
     class ApplicationPage{
 
-        constructor(showName, jquerySelector, $submitArea, startingPercentageInt){
-            this.showName = showName;
+        constructor(pageOrder, jquerySelector, $submitArea, startingPercentageInt){
+            this.pageOrder = pageOrder;
             this.$jqueryPageElement = $(jquerySelector);
             this.headerTitleText = this.$jqueryPageElement.data("section");
             this.$submitArea = $submitArea;
@@ -48,6 +50,7 @@ $(function() {
 
         loadPageIntoApplication(){
             currentPage = this;
+            maxPageNum = Math.max(maxPageNum, this.pageOrder);//TODO: Do a better wau
             if(typeof currentPage.previous === "undefined"){
                 $moveToPreviousPageButton.attr("disabled", "disabled");
             }else{
@@ -188,22 +191,36 @@ $(function() {
     const pages = [
         // TODO: PERCENTAGES
         new ApplicationPage(displayIndex++, "#formPage1", $continueOnlyIfAllAcceptedSubmitSection, 0),
+        new ApplicationPage(displayIndex++, "#formPageExperience", $paginationAfter, 30),
         new ApplicationPage(displayIndex++, "#formPage2", $paginationAfter, 10),
         new ApplicationPage(displayIndex++, "#formPage3", $paginationAfter, 20),
         new ApplicationPage(displayIndex++, "#formPageEducation", $paginationAfter, 30),
-        new ApplicationPage(displayIndex++, "#w", $paginationAfter, 40),
+        new ApplicationPage(displayIndex++, "#formPageExperience", $paginationAfter, 30),
     ];
     pages[0].loadPageIntoApplication();
-    pages[3].loadPageIntoApplication();
 
 
     // Setup pagination
 
-    for(let i = 0; i < pages.length-1; i++) {
-        pages[i].next = pages[i+1];
-    }
-    for(let i = 1; i < pages.length; i++) {
-        pages[i].previous = pages[i-1];
+    // pages[0].next = pages[1];
+    // pages[pages.length-1].previous = pages[pages.length-2];
+    for(let i = pages.length-1; i >= 0; i--) {
+        if(i !== 0){
+            pages[i].previous = pages[i-1];
+        }
+        if(i !== pages.length-1){
+            pages[i].next = pages[i+1];
+        }
+
+        const paginationDirect = document.createElement("div");
+        paginationDirect.innerHTML = `<li class="page-item"><a class="page-link" href="#">${i+1}</a></li>`;
+        $moveToPreviousPageButton.after(paginationDirect);
+        const page = pages[i];
+        $(paginationDirect).on('click', (e)=>{
+            if(maxPageNum >= page.pageOrder){
+                page.loadPageIntoApplication();
+            }
+        });
     }
 
     // Events for page movement
@@ -295,18 +312,84 @@ $(function() {
             </div>
         </div>
     `;
+    const workExperienceBoxHtmlString = `
+        <div class="mt-2 p-2 border-primary border-1 bg-primary-subtle additional-education">
+            <div class="row justify-content-between">
+                <div class="col">
+                    <label for="" class="form-label">Institute Name</label>
+                    <input type="text" class="form-control" required>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                    <div class="invalid-feedback">
+                        The name of the institution is required
+                    </div>
+                </div>
+                <div class="col-auto btn-square me-2">
+                    <button class="btn btn-primary btn-square removeWorkExperience" type="button"><i class="bi bi-trash"></i></button>
+                </div>
+            </div>
+            <div class="">
+                <label for="" class="form-label">Location</label>
+                <input type="text" class="form-control" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+                <div class="invalid-feedback">
+                    The location of the institution is required
+                </div>
+            </div>
+            <div class="">
+                <label for="" class="form-label">Field of Study</label>
+                <input type="text" class="form-control" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+                <div class="invalid-feedback">
+                    Your field of study is required
+                </div>
+            </div>
+            <div class="">
+                <label for="" class="form-label">Degree Received</label>
+                <input type="text" class="form-control">
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+            <div class="form-check form-switch">
+                <input class="form-check-input required" type="checkbox" value="">
+                <label class="form-check-label" for="proofOfWorkEligibility">
+                    Did you graduate?
+                </label>
+            </div>
+        </div>
+    `;
 
     const $educationBoxes = $("#educationBoxes");
     const $addAnotherEducation = $("#addAnotherEduction");
     $addAnotherEducation.on('click',  (e) => {
         const additionalEducations = $educationBoxes.find('.removeEducation').length;
         if(additionalEducations <= 1){
-            $educationBoxes.append(eductionBoxHtmlString).on('click', function(e){
+            $educationBoxes.append(eductionBoxHtmlString).find('.removeEducation').on('click', function(e){
                 $(e.target).parents('.additional-education').remove();
                 $addAnotherEducation.removeClass('disabled');
             });
             if(additionalEducations === 1){
                 $addAnotherEducation.addClass('disabled');
+            }
+        }
+    });
+    const $workExperienceBoxes = $("#experienceBoxes");
+    const $addAnotherWorkExperience = $("#addAnotherWorkExperience");
+    $addAnotherWorkExperience.on('click',  (e) => {
+        const additionalWorkExperiences = $workExperienceBoxes.find('.removeWorkExperience').length;
+        if(additionalWorkExperiences <= 1){
+            $workExperienceBoxes.append(workExperienceBoxHtmlString).find('.removeWorkExperience').on('click', function(e){
+                $(e.target).parents('.additional-education').remove();
+                $addAnotherWorkExperience.removeClass('disabled');
+            });
+            if(additionalWorkExperiences === 1){
+                $addAnotherWorkExperience.addClass('disabled');
             }
         }
     });
