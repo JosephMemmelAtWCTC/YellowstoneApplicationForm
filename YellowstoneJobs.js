@@ -90,6 +90,10 @@ $(function() {
                 this.$jqueryPageElement.find(':invalid').first().focus();
                 return;
             }
+            if(this.next === "undefined"){
+                $moveToNextPageButton.find('button').text("Apply").attr("type", "submit");
+                return;
+            }
             this.next.loadPageIntoApplication();
         }
         moveToPrevious(){
@@ -213,12 +217,10 @@ $(function() {
         new ApplicationPage(displayIndex++, "#formPage3", $paginationAfter, 20),
         new ApplicationPage(displayIndex++, "#formPageEducation", $paginationAfter, 40),
         new ApplicationPage(displayIndex++, "#formPageExperience", $paginationAfter, 60),
-        new ApplicationPage(displayIndex++, "#formPageExtra", $paginationAfter, 60),
+        new ApplicationPage(displayIndex++, "#formPageExtra", $paginationAfter, 100),
 
     ];
     pages[0].loadPageIntoApplication();
-    pages[displayIndex-2].loadPageIntoApplication();
-
 
     // Setup pagination
 
@@ -229,6 +231,8 @@ $(function() {
             pages[i].previous = pages[i-1];
         }
         if(i !== pages.length-1){
+            // console.log("i = "+i);
+            // console.log("n = "+(pages.length-1));
             pages[i].next = pages[i+1];
         }
 
@@ -242,6 +246,7 @@ $(function() {
             }
         });
     }
+    pages[pages.length-1].next = "undefined";
 
     // Events for page movement
     ($startApplicationButton.add($moveToNextPageButton)).on('click', (e) => {
