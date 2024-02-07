@@ -191,9 +191,10 @@ $(function() {
         new ApplicationPage(displayIndex++, "#formPage2", $paginationAfter, 10),
         new ApplicationPage(displayIndex++, "#formPage3", $paginationAfter, 20),
         new ApplicationPage(displayIndex++, "#formPageEducation", $paginationAfter, 30),
+        new ApplicationPage(displayIndex++, "#w", $paginationAfter, 40),
     ];
     pages[0].loadPageIntoApplication();
-    // pages[3].loadPageIntoApplication();
+    pages[3].loadPageIntoApplication();
 
 
     // Setup pagination
@@ -242,53 +243,73 @@ $(function() {
     }
 
     // Addboxes
-    const eductionBoxHtmlString = `<div class="p-2 border-primary border-1 bg-primary-subtle">
-        <div class="">
-            <label for="" class="form-label">Institute Name</label>
-            <input type="text" class="form-control" required>
-            <div class="valid-feedback">
-                Looks good!
+    const eductionBoxHtmlString = `
+        <div class="mt-2 p-2 border-primary border-1 bg-primary-subtle additional-education">
+            <div class="row justify-content-between">
+                <div class="col">
+                    <label for="" class="form-label">Institute Name</label>
+                    <input type="text" class="form-control" required>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                    <div class="invalid-feedback">
+                        The name of the institution is required
+                    </div>
+                </div>
+                <div class="col-auto btn-square me-2">
+                    <button class="btn btn-primary btn-square removeEducation" type="button"><i class="bi bi-trash"></i></button>
+                </div>
             </div>
-            <div class="invalid-feedback">
-                The name of the institution is required
+            <div class="">
+                <label for="" class="form-label">Location</label>
+                <input type="text" class="form-control" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+                <div class="invalid-feedback">
+                    The location of the institution is required
+                </div>
+            </div>
+            <div class="">
+                <label for="" class="form-label">Field of Study</label>
+                <input type="text" class="form-control" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+                <div class="invalid-feedback">
+                    Your field of study is required
+                </div>
+            </div>
+            <div class="">
+                <label for="" class="form-label">Degree Received</label>
+                <input type="text" class="form-control">
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+            <div class="form-check form-switch">
+                <input class="form-check-input required" type="checkbox" value="">
+                <label class="form-check-label" for="proofOfWorkEligibility">
+                    Did you graduate?
+                </label>
             </div>
         </div>
-        <div class="">
-            <label for="" class="form-label">Location</label>
-            <input type="text" class="form-control" required>
-            <div class="valid-feedback">
-                Looks good!
-            </div>
-            <div class="invalid-feedback">
-                The location of the institution is required
-            </div>
-        </div>
-        <div class="">
-            <label for="" class="form-label">Field of Study</label>
-            <input type="text" class="form-control" required>
-            <div class="valid-feedback">
-                Looks good!
-            </div>
-            <div class="invalid-feedback">
-                Your field of study is required
-            </div>
-        </div>
-        <div class="">
-            <label for="" class="form-label">Degree Received</label>
-            <input type="text" class="form-control">
-            <div class="valid-feedback">
-                Looks good!
-            </div>
-        </div>
-        <div class="form-check form-switch">
-            <input class="form-check-input required" type="checkbox" value="">
-            <label class="form-check-label" for="proofOfWorkEligibility">
-                Did you graduate?
-            </label>
-        </div>
-    </div>`;
+    `;
 
-    $("#educationBoxes").append(eductionBoxHtmlString);
+    const $educationBoxes = $("#educationBoxes");
+    const $addAnotherEducation = $("#addAnotherEduction");
+    $addAnotherEducation.on('click',  (e) => {
+        const additionalEducations = $educationBoxes.find('.removeEducation').length;
+        if(additionalEducations <= 1){
+            $educationBoxes.append(eductionBoxHtmlString).on('click', function(e){
+                $(e.target).parents('.additional-education').remove();
+                $addAnotherEducation.removeClass('disabled');
+            });
+            if(additionalEducations === 1){
+                $addAnotherEducation.addClass('disabled');
+            }
+        }
+    });
 
 
 

@@ -637,11 +637,61 @@
     <div class="row-cols-1 row-cols-md-1 row d-flex justify-content-center">
 <!--TODO: Add warning about number of spaces to add-->
 <!--           TODO: MAKE JS ADJUST LABELS WITH EMPTY FOR'S ASSIGN TO CLOSEST-->
-        <div id="educationBoxes">
-
+        <div id="educationBoxes" class="col">
+            <div class="p-2 border-primary border-1 bg-primary-subtle">
+                <div class="">
+                    <label for="" class="form-label">Institute Name</label>
+                    <input type="text" class="form-control" required>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                    <div class="invalid-feedback">
+                        The name of the institution is required
+                    </div>
+                </div>
+                <div class="">
+                    <label for="" class="form-label">Location</label>
+                    <input type="text" class="form-control" required>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                    <div class="invalid-feedback">
+                        The location of the institution is required
+                    </div>
+                </div>
+                <div class="">
+                    <label for="" class="form-label">Field of Study</label>
+                    <input type="text" class="form-control" required>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                    <div class="invalid-feedback">
+                        Your field of study is required
+                    </div>
+                </div>
+                <div class="">
+                    <label for="" class="form-label">Degree Received</label>
+                    <input type="text" class="form-control">
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                </div>
+                <div class="form-check form-switch">
+                    <input class="form-check-input required" type="checkbox" value="">
+                    <label class="form-check-label" for="proofOfWorkEligibility">
+                        Did you graduate?
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-3 justify-content-end">
+            <button class="btn btn-primary col-md-2" id="addAnotherEduction" type="button">Add Another Eduction</button>
         </div>
     </div>
 </div>
+<div id="w" class="formPage col-12 row g-3 needs-validation" data-section="w">
+</div>
+
 </div>
 <!-- HIDDEN FORM PAGES THAT GET MOVED INTO FORM WHEN ON PAGE END -->
 
