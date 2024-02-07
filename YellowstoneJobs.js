@@ -213,9 +213,11 @@ $(function() {
         new ApplicationPage(displayIndex++, "#formPage3", $paginationAfter, 20),
         new ApplicationPage(displayIndex++, "#formPageEducation", $paginationAfter, 40),
         new ApplicationPage(displayIndex++, "#formPageExperience", $paginationAfter, 60),
+        new ApplicationPage(displayIndex++, "#formPageExtra", $paginationAfter, 60),
 
     ];
     pages[0].loadPageIntoApplication();
+    pages[displayIndex-2].loadPageIntoApplication();
 
 
     // Setup pagination
@@ -253,6 +255,7 @@ $(function() {
         ["#requiresSponsorship", "#requiresSponsorshipExpand"],
         ["#atLeast18", "#atLeast18Expand"],
         ["#convicted", "#convictedExpand"],
+        ["#workedUnderBefore", "#workedUnderBeforeExpand"],
     ];
     setupToggleOnChanges(expandBasedOnAnswerToggle);
 
@@ -369,25 +372,33 @@ $(function() {
                 </div>
 
                 <div class="">
-                    <label for="" class="form-label">Supervisor Name</label>
+                        <label for="" class="form-label">Supervisor Name</label>
+                        <input type="text" class="form-control" required>
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                        <div class="invalid-feedback">
+                            Supervisor name is required
+                        </div>
+                    </div>
+                </div>
+                <div class="">
+                    <label for="" class="form-label">Supervisor Position</label>
                     <input type="text" class="form-control" required>
                     <div class="valid-feedback">
                         Looks good!
                     </div>
                     <div class="invalid-feedback">
-                        Supervisor name is required
+                        Supervisor position is required
                     </div>
-                </div></div>
-            <div class="">
-                <label for="" class="form-label">Supervisor Name</label>
-                <input type="text" class="form-control" required>
-                <div class="valid-feedback">
-                    Looks good!
                 </div>
-                <div class="invalid-feedback">
-                    Supervisor name is required
+                <div class="">
+                    <label for="" class="form-label">Supervisor Contact</label>
+                    <input type="text" class="form-control">
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
                 </div>
-            </div>
             <div class="row">
                 <div class="col-md-6">
                     <label for="" class="form-label">Starting Date</label>
