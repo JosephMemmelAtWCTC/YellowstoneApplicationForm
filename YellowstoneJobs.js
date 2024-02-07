@@ -8,6 +8,8 @@ $(function() {
     // const $previousPage = $('#previousPage');
     // Paganation Buttons End
 
+    // Driver's license show
+    const $showDriversLicenceRequiredForJob = $('#showDriversLicenceRequiredForJob');
 
     const $continueOnlyIfAllAcceptedSubmitSection = $("#continueOnlyIfAllAccepted");
     const $paginationAfter = $("#paginationAfter");
@@ -168,8 +170,8 @@ $(function() {
                 const tempDiv = document.createElement("div");
                 // console.log(job)
                 const id = job.jobTitle.replaceAll(" ","");
-                tempDiv.innerHTML = `<div class="input-group">
-                                        <input className="form-check-input mt-0" type="checkbox" id="${id}">
+                tempDiv.innerHTML = `<div class="input-group job ${job.requiresDriversLicence? "requiresDriversLicence":""}">
+                                        <input className="form-check-input mt-0" type="checkbox" id="${job.jobTitle}<">
                                         <label class="form-check-label text-wrap" for="${id}">${job.jobTitle}</label>
                                      </div>`;
                 accordionBody.appendChild(tempDiv);
@@ -182,6 +184,20 @@ $(function() {
     const foodRelatedJobs = new JobList("Food", ["Dining Room Server Assistant***", "Employee Dining Room Crew***", "Fast Food Crew***", "Kitchen Crew***", "Room Attendant***", "Activities Sales Agent", "Bar Lead", "Barista", "Bartender", "Cocktail Server", "Cook", "Dining Room Host", "Dining Room Host Lead", "Dining Room Management", "Dining Room Server", "Employee Pub Crew/Lead", "Fast Food Management", "Food and Beverage Management", "Housekeeping Room Inspector", "Housekeeping Trainer", "Pantry Supervisor", "Snack Shop / Deli Supervisor", "Sous Chef", "Steward", "Storekeeper", "Wrangler/Driver"]);
     const transportationRelatedJobs = new JobList("Transportation", ["Bus Driver/Guide (D.L.)", "Bus Service Person (D.L.)", "Distribution Center Truck Driver (D.L.)", "Tour Guide (D.L.)", "Touring Car Driver- Interpretive Guide Non CDL (D.L.)", "Traveling Night Auditor", "Warehouse Driver (OFI)"]);
     const managementRelatedJobs = new JobList("Management", ["Asst. HR Manager", "Cafeteria Management", "Campground Management", "Employee Dining Room Management", "Front Office Management", "General Accounting Office", "Guest Services Agent", "Guest Services Agent (Campground)", "Housing Manager", "Internship", "Location Controller/Assistant", "Night Auditor", "Personnel Management", "Recreation Coordinator (D.L.)", "Recreation Supervisor (D.L.)", "Reservations Sales Agent", "Residence Coordinator", "Retail Management", "R&M Staff Assistant", "Senior Guest Services Agent (Campground)", "Traveling Night Auditor", "Warehouse Manager"]);
+
+    $showDriversLicenceRequiredForJob.on('change', (e) => {
+        $('.job').each((index, job) => {
+            if($(job).hasClass('requiresDriversLicence')){
+                if(e.target.checked){
+                    $(job).removeClass('d-none');
+                }else{
+                    $(job).addClass('d-none');
+                }
+            }
+
+        });
+    });
+
 
     document.getElementById("foodRelatedJobs").appendChild(foodRelatedJobs);
     document.getElementById("transportationRelatedJobs").appendChild(transportationRelatedJobs);
