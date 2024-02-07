@@ -99,7 +99,7 @@ $(function() {
         const $areaToCheck = $(this);
         const $feedbackContainer = $areaToCheck.find('.feedback-container');
 
-        if ($areaToCheck.find(":checked").length >= 1) {
+        if ($areaToCheck.find('.input-group input[type="checkbox"]:checked').length > 0) {
             $areaToCheck.removeClass('was-validated');
             $areaToCheck.addClass('needs-validation');
             $areaToCheck.removeClass('set-invalid');
@@ -179,11 +179,13 @@ $(function() {
         }
     }
 
-    const foodRelatedJobs = new JobList("Food Related", ["Dining Room Server Assistant***", "Employee Dining Room Crew***", "Fast Food Crew***", "Kitchen Crew***", "Room Attendant***", "Activities Sales Agent", "Bar Lead", "Barista", "Bartender", "Cocktail Server", "Cook", "Dining Room Host", "Dining Room Host Lead", "Dining Room Management", "Dining Room Server", "Employee Pub Crew/Lead", "Fast Food Management", "Food and Beverage Management", "Housekeeping Room Inspector", "Housekeeping Trainer", "Pantry Supervisor", "Snack Shop / Deli Supervisor", "Sous Chef", "Steward", "Storekeeper", "Wrangler/Driver"]);
-    const transportationRelatedJobs = new JobList("Transportation Related", ["Bus Driver/Guide (D.L.)", "Bus Service Person (D.L.)", "Distribution Center Truck Driver (D.L.)", "Tour Guide (D.L.)", "Touring Car Driver- Interpretive Guide Non CDL (D.L.)", "Traveling Night Auditor", "Warehouse Driver (OFI)"]);
+    const foodRelatedJobs = new JobList("Food", ["Dining Room Server Assistant***", "Employee Dining Room Crew***", "Fast Food Crew***", "Kitchen Crew***", "Room Attendant***", "Activities Sales Agent", "Bar Lead", "Barista", "Bartender", "Cocktail Server", "Cook", "Dining Room Host", "Dining Room Host Lead", "Dining Room Management", "Dining Room Server", "Employee Pub Crew/Lead", "Fast Food Management", "Food and Beverage Management", "Housekeeping Room Inspector", "Housekeeping Trainer", "Pantry Supervisor", "Snack Shop / Deli Supervisor", "Sous Chef", "Steward", "Storekeeper", "Wrangler/Driver"]);
+    const transportationRelatedJobs = new JobList("Transportation", ["Bus Driver/Guide (D.L.)", "Bus Service Person (D.L.)", "Distribution Center Truck Driver (D.L.)", "Tour Guide (D.L.)", "Touring Car Driver- Interpretive Guide Non CDL (D.L.)", "Traveling Night Auditor", "Warehouse Driver (OFI)"]);
+    const managementRelatedJobs = new JobList("Management", ["Asst. HR Manager", "Cafeteria Management", "Campground Management", "Employee Dining Room Management", "Front Office Management", "General Accounting Office", "Guest Services Agent", "Guest Services Agent (Campground)", "Housing Manager", "Internship", "Location Controller/Assistant", "Night Auditor", "Personnel Management", "Recreation Coordinator (D.L.)", "Recreation Supervisor (D.L.)", "Reservations Sales Agent", "Residence Coordinator", "Retail Management", "R&M Staff Assistant", "Senior Guest Services Agent (Campground)", "Traveling Night Auditor", "Warehouse Manager"]);
 
     document.getElementById("foodRelatedJobs").appendChild(foodRelatedJobs);
     document.getElementById("transportationRelatedJobs").appendChild(transportationRelatedJobs);
+    document.getElementById("managementRelatedJobs").appendChild(managementRelatedJobs);
 
     // PAGES
     let displayIndex = 1;
@@ -191,11 +193,11 @@ $(function() {
     const pages = [
         // TODO: PERCENTAGES
         new ApplicationPage(displayIndex++, "#formPage1", $continueOnlyIfAllAcceptedSubmitSection, 0),
-        new ApplicationPage(displayIndex++, "#formPageExperience", $paginationAfter, 30),
         new ApplicationPage(displayIndex++, "#formPage2", $paginationAfter, 10),
         new ApplicationPage(displayIndex++, "#formPage3", $paginationAfter, 20),
-        new ApplicationPage(displayIndex++, "#formPageEducation", $paginationAfter, 30),
-        new ApplicationPage(displayIndex++, "#formPageExperience", $paginationAfter, 30),
+        new ApplicationPage(displayIndex++, "#formPageEducation", $paginationAfter, 40),
+        new ApplicationPage(displayIndex++, "#formPageExperience", $paginationAfter, 60),
+
     ];
     pages[0].loadPageIntoApplication();
 
@@ -213,7 +215,7 @@ $(function() {
         }
 
         const paginationDirect = document.createElement("div");
-        paginationDirect.innerHTML = `<li class="page-item"><a class="page-link" href="#">${i+1}</a></li>`;
+        paginationDirect.innerHTML = `<li class="page-item"><a class="page-link rounded-0" href="#">${i+1}</a></li>`;
         $moveToPreviousPageButton.after(paginationDirect);
         const page = pages[i];
         $(paginationDirect).on('click', (e)=>{
@@ -313,53 +315,96 @@ $(function() {
         </div>
     `;
     const workExperienceBoxHtmlString = `
-        <div class="mt-2 p-2 border-primary border-1 bg-primary-subtle additional-education">
-            <div class="row justify-content-between">
+        <div class="mt-3 p-2 border-primary border-1 bg-primary-subtle additional-workExperience">
+            <div class="row">
                 <div class="col">
-                    <label for="" class="form-label">Institute Name</label>
+                    <label for="" class="form-label">Employer Name</label>
                     <input type="text" class="form-control" required>
                     <div class="valid-feedback">
                         Looks good!
                     </div>
                     <div class="invalid-feedback">
-                        The name of the institution is required
+                        The name of your employer is required
                     </div>
                 </div>
                 <div class="col-auto btn-square me-2">
                     <button class="btn btn-primary btn-square removeWorkExperience" type="button"><i class="bi bi-trash"></i></button>
                 </div>
             </div>
+            
             <div class="">
-                <label for="" class="form-label">Location</label>
+                <label for="" class="form-label">Address</label>
                 <input type="text" class="form-control" required>
                 <div class="valid-feedback">
                     Looks good!
                 </div>
                 <div class="invalid-feedback">
-                    The location of the institution is required
+                    The location of your previous employer is required
                 </div>
             </div>
             <div class="">
-                <label for="" class="form-label">Field of Study</label>
+                <label for="" class="form-label">Position</label>
                 <input type="text" class="form-control" required>
                 <div class="valid-feedback">
                     Looks good!
                 </div>
                 <div class="invalid-feedback">
-                    Your field of study is required
+                    Your Position is required
                 </div>
-            </div>
+
+                <div class="">
+                    <label for="" class="form-label">Supervisor Name</label>
+                    <input type="text" class="form-control" required>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                    <div class="invalid-feedback">
+                        Supervisor name is required
+                    </div>
+                </div></div>
             <div class="">
-                <label for="" class="form-label">Degree Received</label>
-                <input type="text" class="form-control">
+                <label for="" class="form-label">Supervisor Name</label>
+                <input type="text" class="form-control" required>
                 <div class="valid-feedback">
                     Looks good!
+                </div>
+                <div class="invalid-feedback">
+                    Supervisor name is required
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <label for="" class="form-label">Starting Date</label>
+                    <input type="date" class="form-control" required>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                    <div class="invalid-feedback">
+                        Start date is required
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <label for="" class="form-label">End Date</label>
+                    <input type="date" class="form-control" >
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <label class="form-label">Position Duties</label>
+                <textarea type="text" class="form-control" required></textarea>
+                <div class="valid-feedback">
+                    Details provided!
+                </div>
+                <div class="invalid-feedback">
+                    Duties explanation is required
                 </div>
             </div>
             <div class="form-check form-switch">
                 <input class="form-check-input required" type="checkbox" value="">
-                <label class="form-check-label" for="proofOfWorkEligibility">
-                    Did you graduate?
+                <label class="form-check-label" for="">
+                    May we contact this employer?
                 </label>
             </div>
         </div>
@@ -385,7 +430,7 @@ $(function() {
         const additionalWorkExperiences = $workExperienceBoxes.find('.removeWorkExperience').length;
         if(additionalWorkExperiences <= 1){
             $workExperienceBoxes.append(workExperienceBoxHtmlString).find('.removeWorkExperience').on('click', function(e){
-                $(e.target).parents('.additional-education').remove();
+                $(e.target).parents('.additional-workExperience').remove();
                 $addAnotherWorkExperience.removeClass('disabled');
             });
             if(additionalWorkExperiences === 1){
